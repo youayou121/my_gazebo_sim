@@ -1,0 +1,27 @@
+robot_radius: 0.2
+
+obstacle_layer:
+  enabled: true
+  combination_method: 0
+  track_unknown_space: true
+  obstacle_range: 5.0 #只有障碍物在这个范围内才会被标记
+  raytrace_range: 7.0 ##只有在这个范围内不存在的才会被消除
+  observation_persistence: 0.0
+  observation_sources: scan
+  scan: 
+    data_type: LaserScan 
+    topic: scan 
+    marking: true 
+    clearing: true
+
+inflation_layer:
+  enabled: true
+  cost_scaling_factor: 5.0
+  
+  
+static_layer:
+  enabled: true
+
+transform_tolerance: 2.0
+
+map_type: costmap

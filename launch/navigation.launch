@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<launch>
+    <node name="map_server" pkg="map_server" type="map_server"
+        args="$(find test_mycar)/maps/my_room_wall.yaml">
+        <param name="frame_id" value="map" />
+    </node>
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+        <rosparam file="$(find test_mycar)/param/costmap_common_params.yaml" command="load" ns="global_costmap" />
+        <rosparam file="$(find test_mycar)/param/costmap_common_params.yaml" command="load" ns="local_costmap" />
+        <rosparam file="$(find test_mycar)/param/local_costmap_params.yaml" command="load" />
+        <rosparam file="$(find test_mycar)/param/global_costmap_params.yaml" command="load" />
+        <!-- <rosparam file="$(find test_mycar)/param/teb_local_planner_params_diff.yaml" command="load" /> -->
+        <rosparam file="$(find test_mycar)/param/dwa_local_planner_params.yaml" command="load" />
+        <rosparam file="$(find test_mycar)/param/move_base_params.yaml" command="load" />
+    </node>
+    <include file="$(find test_mycar)/launch/amcl.launch"/>
+     <node name="rviz" pkg="rviz" type="rviz"  output="log" args = "-d $(find test_mycar)/config/test_tracer.rviz"/>
+</launch>

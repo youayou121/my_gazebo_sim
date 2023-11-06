@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="tracer">
+    <xacro:macro name="wheel_func" params="wheel_name flag">
+        <link name="${wheel_name}_wheel">
+            <visual>
+                <geometry>
+                    <cylinder radius="${wheel_radius}" length="${wheel_length}"/>
+                </geometry>
+                <origin xyz="0.0 0.0 0.0" rpy="${pi/2} 0.0 0.0"/>
+            </visual>
+            <collision>
+                <geometry>
+                    <cylinder radius="${wheel_radius}" length="${wheel_length}"/>
+                </geometry>
+                <origin xyz="0.0 0.0 0.0" rpy="${pi/2} 0.0 0.0"/>
+            </collision>
+            <xacro:cylinder_inertial_matrix m="${wheel_mass}" r="${wheel_radius}" h="${wheel_length}"/>
+        </link>
+        <joint name="${wheel_name}2chasis" type="continuous">
+            <parent link="chasis"/>
+            <child link="${wheel_name}_wheel"/>
+            <axis xyz="0 1 0"/>
+            <origin xyz="0 ${wheel_dist/2*flag} ${(sphere_radius*2+chasis_length/2-wheel_radius)*-1}" rpy="0 0 0"/>
+        </joint>
+        <transmission name="${wheel_name}2chasis_trans">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${wheel_name}2chasis">
+                <hardwareInterface>VelocityJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${wheel_name}2chasis_motor">
+                <mechanicalReduction>1.0</mechanicalReduction>
+                <hardwareInterface>VelocityJointInterface</hardwareInterface>
+            </actuator>
+        </transmission>
+    </xacro:macro>
+    <xacro:wheel_func wheel_name="left" flag = "1"/>
+    <xacro:wheel_func wheel_name="right" flag = "-1"/>
+    <gazebo>
+        <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+            <!-- <publishWheelTF>true</publishWheelTF> -->
+            <robotNamespace>/</robotNamespace>
+            <!-- <publishTf>1</publishTf> -->
+            <!-- <publishWheelJointState>true</publishWheelJointState> -->
+            <alwaysOn>true</alwaysOn>
+            <updateRate>100.0</updateRate>
+            <!-- <legacyMode>true</legacyMode> -->
+            <leftJoint>left2chasis</leftJoint> <!-- 左轮 -->
+            <rightJoint>right2chasis</rightJoint> <!-- 右轮 -->
+            <wheelSeparation>${wheel_dist+wheel_length}</wheelSeparation> <!-- 车轮间距 -->
+            <wheelDiameter>${wheel_radius*2}</wheelDiameter> <!-- 车轮直径 -->
+            <!-- <broadcastTF>1</broadcastTF> -->
+            <wheelTorque>30</wheelTorque>
+            <!-- <wheelAcceleration>1.8</wheelAcceleration> -->
+            <commandTopic>cmd_vel</commandTopic> <!-- 运动控制话题 -->
+            <odometryFrame>odom</odometryFrame> 
+            <odometryTopic>odom</odometryTopic> <!-- 里程计话题 -->
+            <robotBaseFrame>base_link</robotBaseFrame> <!-- 根坐标系 -->
+        </plugin>
+    </gazebo>
+</robot>

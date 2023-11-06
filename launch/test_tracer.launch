@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<launch>
+    <rosparam file="$(find test_mycar)/config/tracer_controller.yaml" command="load"/>
+    <!-- <param name="robot_description" textfile="$(find test_mycar)/urdf/tracer.urdf"/> -->
+    <param name="robot_description" command="$(find xacro)/xacro $(find test_mycar)/xacro/tracer.xacro"/>
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+        <param name="publish_frequency" type="double" value="20.0" />
+        <!-- <param name="robot_description" command="$(find xacro)/xacro $(find test_mycar)/xacro/tracer.xacro" /> -->
+    </node>
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+         <param name="publish_frequency" type="double" value="20.0" />
+    </node>
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value = "$(find test_mycar)/worlds/my_room_wall.world"/>
+    </include>
+    <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -model tracer -param robot_description -x 2"/>
+    
+    <node name="controller_manager" pkg="controller_manager" type="spawner" output="screen" respawn="false"
+        ns="/tracer"   args="joint_state_controller 
+        platform2chasis_position_controller
+        left2chasis_position_controller
+        right2chasis_position_controller
+        "/>
+</launch>

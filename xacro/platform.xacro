@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="tracer">
+    <link name="platform">
+        <visual>
+            <geometry>
+                <cylinder radius="${chasis_radius}" length="0.05"/>
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="${chasis_radius}" length="0.05"/>
+            </geometry>
+        </collision>
+         <xacro:cylinder_inertial_matrix m="1.0" r="${chasis_radius}" h="0.05"/>
+    </link>
+    <joint name="platform2chasis" type="prismatic">
+        <parent link="chasis"/>
+        <child link="platform"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="0.0" upper="1.0" velocity="0.5" effort="1000.0"/>
+        <origin xyz="0 0 ${chasis_length+0.2}" rpy="0 0 0"/>
+    </joint>
+    <transmission name="platform2chasis_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="platform2chasis">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="platform2chasis_motor">
+            <mechanicalReduction>1.0</mechanicalReduction>
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </actuator>
+    </transmission>
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/tracer</robotNamespace>
+            <robotSimType>gazebo_ros_control</robotSimType>
+        </plugin>
+    </gazebo>
+</robot>

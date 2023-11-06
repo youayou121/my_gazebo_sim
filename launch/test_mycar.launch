@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- 在参数服务器载入urdf文件 -->
+   <param name="robot_description" textfile="$(find test_mycar)/urdf/mycar.urdf"/>
+   
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
+    <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"/>
+    <!-- 启动rviz -->
+    <node name="rviz" pkg="rviz" type="rviz"  output="screen" args = "-d $(find test_mycar)/config/test_mycar.rviz"/>
+</launch>
