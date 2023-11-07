@@ -1,4 +1,21 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="racecar">
-    
+    <link name="chasis">
+        <visual >
+            <geometry>
+                <box size="${chasis_l} ${chasis_w} ${chasis_h}"/>
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="${chasis_l} ${chasis_w} ${chasis_h}"/>
+            </geometry>
+        </collision>
+        <xacro:box_inertial_matrix m="${chasis_m}" l="${chasis_l}" w="${chasis_w}" h="${chasis_h}" />
+    </link>
+    <joint name="chasis2base" type="fixed">
+        <parent link="base_link"/>
+        <child link="chasis"/>
+        <origin xyz="0.0 0.0 ${wheel_r*2+chasis_h/2}" rpy="0.0 0.0 0.0"/>
+    </joint>
 </robot>

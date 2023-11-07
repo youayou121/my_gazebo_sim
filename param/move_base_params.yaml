@@ -1,8 +1,8 @@
 base_global_planner: navfn/NavfnROS
 # base_global_planner: RRTstar_planner/RRTstarPlannerROS
-# base_local_planner: teb_local_planner/TebLocalPlannerROS
+base_local_planner: teb_local_planner/TebLocalPlannerROS
 # base_local_planner: my_teb_local_planner/TebLocalPlannerROS
-base_local_planner: dwa_local_planner/DWAPlannerROS
+# base_local_planner: dwa_local_planner/DWAPlannerROS
 planner_frequency: 0.0 #全局路径规划频率
 controller_frequency: 10.0 #局部路径规划频率.
 planner_patience: 5.0
