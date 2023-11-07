@@ -23,17 +23,12 @@
     <transmission name="platform2chasis_trans">
         <type>transmission_interface/SimpleTransmission</type>
         <joint name="platform2chasis">
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>PositionJointInterface</hardwareInterface>
         </joint>
         <actuator name="platform2chasis_motor">
             <mechanicalReduction>1.0</mechanicalReduction>
-            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <hardwareInterface>PositionJointInterface</hardwareInterface>
         </actuator>
     </transmission>
-    <gazebo>
-        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-            <robotNamespace>/tracer</robotNamespace>
-            <robotSimType>gazebo_ros_control</robotSimType>
-        </plugin>
-    </gazebo>
+    
 </robot>

@@ -22,7 +22,7 @@
             <parent link="chasis"/>
             <child link="${name}_steering"/>
             <axis xyz="0 0 1"/>
-            <limit lower="-1.0" upper="1.0" velocity="1.0" effort="1000.0"/>
+            <limit lower="-1.52" upper="1.52" velocity="1.0" effort="1000.0"/>
             <origin xyz="${chasis_l/2-wheel_r} ${flag*(chasis_w/2-wheel_l/2)} ${-(wheel_r+chasis_h/2)}" rpy="0 0 0"/>
         </joint>
         <transmission name="${name}_steering2chasis_trans">

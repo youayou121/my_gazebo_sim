@@ -11,7 +11,7 @@
     <joint name="lidar2chasis" type="fixed">
         <parent link="chasis"/>
         <child link="lidar"/>
-        <origin xyz="${chasis_l/2-lidar_r} 0.0 ${chasis_h/2+lidar_l/2}" rpy="0.0 0.0 0.0"/>
+        <origin xyz="${chasis_l/2-wheel_r-imu_l/2-lidar_r} 0.0 ${chasis_h/2+lidar_l}" rpy="0.0 0.0 0.0"/>
     </joint>
     <gazebo reference="lidar">
         <sensor type="ray" name="rplidar">

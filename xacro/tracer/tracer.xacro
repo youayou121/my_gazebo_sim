@@ -7,12 +7,12 @@
         </visual>
     </link>
     <xacro:include filename="$(find test_mycar)/xacro/tracer/params.xacro"/>
-    <xacro:include filename="$(find test_mycar)/xacro/tracer/inertia.xacro"/>
+    <xacro:include filename="$(find test_mycar)/xacro/inertia.xacro"/>
+    <!-- <xacro:include filename="$(find test_mycar)/xacro/tracer/platform.xacro"/> -->
     <xacro:include filename="$(find test_mycar)/xacro/tracer/chasis.xacro"/>
-    <xacro:include filename="$(find test_mycar)/xacro/tracer/spheres.xacro"/>
     <xacro:include filename="$(find test_mycar)/xacro/tracer/lidar.xacro"/>
     <!-- <xacro:include filename="$(find test_mycar)/xacro/tracer/camera.xacro"/> -->
     <xacro:include filename="$(find test_mycar)/xacro/tracer/kinect_camera.xacro"/>
-    <xacro:include filename="$(find test_mycar)/xacro/tracer/platform.xacro"/>
+    <xacro:include filename="$(find test_mycar)/xacro/tracer/spheres.xacro"/>
     <xacro:include filename="$(find test_mycar)/xacro/tracer/wheels.xacro"/>
 </robot>

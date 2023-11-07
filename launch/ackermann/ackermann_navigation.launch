@@ -12,6 +12,6 @@
         <rosparam file="$(find test_mycar)/param/ackermann/ackermann_teb.yaml" command="load" />
         <rosparam file="$(find test_mycar)/param/move_base_params.yaml" command="load" />
     </node>
-    <include file="$(find test_mycar)/launch/amcl.launch"/>
+    <!-- <include file="$(find test_mycar)/launch/amcl.launch"/> -->
      <node name="rviz" pkg="rviz" type="rviz"  output="log" args = "-d $(find test_mycar)/config/ackermann/ackermann.rviz"/>
 </launch>

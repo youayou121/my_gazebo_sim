@@ -13,6 +13,6 @@
         <rosparam file="$(find test_mycar)/param/dwa_local_planner_params.yaml" command="load" />
         <rosparam file="$(find test_mycar)/param/move_base_params.yaml" command="load" />
     </node>
-    <include file="$(find test_mycar)/launch/amcl.launch"/>
+    <include file="$(find test_mycar)/launch/tracer/tracer_amcl.launch"/>
      <node name="rviz" pkg="rviz" type="rviz"  output="log" args = "-d $(find test_mycar)/config/tracer/tracer.rviz"/>
 </launch>

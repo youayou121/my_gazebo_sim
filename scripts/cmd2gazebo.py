@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 import rospy
 from std_msgs.msg import Float64
@@ -23,7 +23,7 @@ class CmdVel2Gazebo:
         self.z = 0
 
         # car Wheelbase (in m)
-        self.L = 0.18
+        self.L = 0.8
 
         # car Tread
         self.T_front = 0.09
@@ -58,10 +58,10 @@ class CmdVel2Gazebo:
         # w = v / r
         self.x = data.linear.x / 0.1
         # constrain the ideal steering angle such that the ackermann steering is maxed out
-        if(data.linear.x>0):
-            self.z = max(-self.maxsteer,min(self.maxsteer,data.angular.z))
-        else:
-            self.z = -max(-self.maxsteer,min(self.maxsteer,data.angular.z))
+        # if(data.linear.x>0):
+        self.z = max(-self.maxsteer,min(self.maxsteer,data.angular.z))
+        # else:
+            # self.z = -max(-self.maxsteer,min(self.maxsteer,data.angular.z))
         self.lastMsg = rospy.Time.now()
 
     def publish(self):
