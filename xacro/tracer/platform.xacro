@@ -35,6 +35,7 @@
             <robotNamespace>/tracer</robotNamespace>
             <robotParam>/robot_description</robotParam>
             <legacyModeNS>true</legacyModeNS> 
+            <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
         </plugin>
     </gazebo>
 </robot>

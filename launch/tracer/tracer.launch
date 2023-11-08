@@ -7,8 +7,9 @@
     </include>
 
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
-        <param name="publish_frequency" type="double" value="20.0" />
         <remap from="/joint_states" to="/tracer/joint_states"/>
+        <param name="publish_frequency" type="double" value="20.0" />
+        <param name="robot_description" command="$(find xacro)/xacro --inorder $(find test_mycar)/xacro/tracer/tracer.xacro" />
     </node>
     <!-- <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" /> -->
     <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -model tracer -param robot_description -x 2"/>

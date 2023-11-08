@@ -11,11 +11,11 @@ tracer:
     pid: {p: 100.0, i: 0.1, d: 1.0}
   
   left2chasis_position_controller:
-    type: velocity_controllers/JointVelocityController
+    type: effort_controllers/JointEffortController
     joint: left2chasis
     pid: {p: 100.0, i: 0.1, d: 1.0}
   right2chasis_position_controller:
-    type: velocity_controllers/JointVelocityController
+    type: effort_controllers/JointEffortController
     joint: right2chasis
     pid: {p: 100.0, i: 0.1, d: 1.0}
   

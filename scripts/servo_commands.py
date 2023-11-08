@@ -13,8 +13,8 @@ def set_throttle_steer(data):
 
     pub_vel_left_rear_wheel = rospy.Publisher('/racecar/rear_left_velocity_controller/command', Float64, queue_size=1)
     pub_vel_right_rear_wheel = rospy.Publisher('/racecar/rear_right_velocity_controller/command', Float64, queue_size=1)
-    # pub_vel_left_front_wheel = rospy.Publisher('/racecar/left_front_wheel_velocity_controller/command', Float64, queue_size=1)
-    # pub_vel_right_front_wheel = rospy.Publisher('/racecar/right_front_wheel_velocity_controller/command', Float64, queue_size=1)
+    pub_vel_left_front_wheel = rospy.Publisher('/racecar/front_left_velocity_controller/command', Float64, queue_size=1)
+    pub_vel_right_front_wheel = rospy.Publisher('/racecar/front_right_velocity_controller/command', Float64, queue_size=1)
 
     pub_pos_left_steering_hinge = rospy.Publisher('/racecar/front_left_steering_position_controller/command', Float64, queue_size=1)
     pub_pos_right_steering_hinge = rospy.Publisher('/racecar/front_right_steering_position_controller/command', Float64, queue_size=1)
@@ -24,8 +24,8 @@ def set_throttle_steer(data):
 
     pub_vel_left_rear_wheel.publish(throttle)
     pub_vel_right_rear_wheel.publish(throttle)
-    # pub_vel_left_front_wheel.publish(throttle)
-    # pub_vel_right_front_wheel.publish(throttle)
+    pub_vel_left_front_wheel.publish(throttle)
+    pub_vel_right_front_wheel.publish(throttle)
     pub_pos_left_steering_hinge.publish(steer)
     pub_pos_right_steering_hinge.publish(steer)
 

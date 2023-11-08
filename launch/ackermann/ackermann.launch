@@ -1,32 +1,31 @@
 <?xml version="1.0"?>
 <launch>
-    <rosparam file="$(find test_mycar)/config/ackermann/ackermann.yaml" command="load"/>
-    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/racecar" 
-    args="joint_state_controller 
-    rear_right_velocity_controller 
-    rear_left_velocity_controller
-    front_right_steering_position_controller
-    front_left_steering_position_controller"/>
-
-    <param name="robot_description" command="$(find xacro)/xacro $(find test_mycar)/xacro/ackermann/racecar.xacro"/>
-    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
-        <param name="publish_frequency" type="double" value="20.0" />
-        <remap from="/joint_states" to="/racecar/joint_states"/>
-    </node>
-    <!-- <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
-         <param name="publish_frequency" type="double" value="20.0" />
-    </node> -->
-
+    <rosparam file="$(find test_mycar)/config/ackermann/controllers.yaml" command="load"/>
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
         <arg name="world_name" value = "$(find test_mycar)/worlds/my_room_wall.world"/>
     </include>
 
-    <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -model tracer -param robot_description"/>
+    <param name="robot_description" command="$(find xacro)/xacro $(find test_mycar)/xacro/ackermann/racecar.xacro"/>
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+        <remap from="/joint_states" to="/racecar/joint_states"/>
+        <param name="publish_frequency" type="double" value="20.0" />
+        <param name="robot_description" command="$(find xacro)/xacro --inorder $(find test_mycar)/xacro/ackermann/racecar.xacro"/> 
+    </node>
+    <!-- <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" output="screen"/> -->
     
+    <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -model racecar -param robot_description"/>
+    <node name="controller_manager" 
+            pkg="controller_manager" 
+            type="spawner" 
+            output="screen" 
+            ns="/racecar" args="
+            rear_right_velocity_controller 
+            rear_left_velocity_controller
+            front_right_steering_position_controller
+            front_left_steering_position_controller
+            joint_state_controller"/>
     <!-- 发布里程计信息 -->
-    <node name="odom_pub" pkg="test_mycar" type="odom_pub.py" output="screen"/>
-    <!-- <node name="gazebo_odometry" pkg="test_mycar" type="gazebo_odometry.py" output="screen"/> -->
-    <!-- 通过cmd_vel计算车轮的速度 -->
-    <node name="cmd2gazebo" pkg="test_mycar" type="cmd2gazebo.py" output="screen"/>
-
+    <node pkg="test_mycar" type="servo_commands.py" name="servo_commands" output="screen"/>
+    <node name="gazebo_odometry" pkg="test_mycar" type="gazebo_odometry.py"/>
+    <node name="nav_sim" pkg="test_mycar" type="nav_sim.py" />
 </launch>

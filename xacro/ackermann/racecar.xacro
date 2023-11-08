@@ -25,10 +25,10 @@
     <xacro:include filename="$(find test_mycar)/xacro/ackermann/imu.xacro"/>
     <gazebo>
         <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-          <robotNamespace>/racecar</robotNamespace>
-          <robotParam>robot_description</robotParam>
-          <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
-          <legacyModeNS>true</legacyModeNS>
+            <robotNamespace>/racecar</robotNamespace>
+            <robotParam>/robot_description</robotParam>
+            <legacyModeNS>true</legacyModeNS> 
+            <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
         </plugin>
     </gazebo>
 </robot>

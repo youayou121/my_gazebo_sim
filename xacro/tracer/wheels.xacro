@@ -25,11 +25,11 @@
         <transmission name="${wheel_name}2chasis_trans">
             <type>transmission_interface/SimpleTransmission</type>
             <joint name="${wheel_name}2chasis">
-                <hardwareInterface>VelocityJointInterface</hardwareInterface>
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
             </joint>
             <actuator name="${wheel_name}2chasis_motor">
                 <mechanicalReduction>1.0</mechanicalReduction>
-                <hardwareInterface>VelocityJointInterface</hardwareInterface>
+                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
             </actuator>
         </transmission>
     </xacro:macro>
@@ -53,7 +53,7 @@
             <broadcastTF>1</broadcastTF>
             <wheelTorque>30</wheelTorque>
             <wheelAcceleration>1.8</wheelAcceleration>
-            <commandTopic>tracer/cmd_vel</commandTopic> <!-- 运动控制话题 -->
+            <commandTopic>/cmd_vel</commandTopic> <!-- 运动控制话题 -->
             <odometryFrame>/odom</odometryFrame> 
             <odometryTopic>/odom</odometryTopic> <!-- 里程计话题 -->
             <robotBaseFrame>/base_link</robotBaseFrame> <!-- 根坐标系 -->
