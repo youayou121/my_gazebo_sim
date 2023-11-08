@@ -30,5 +30,11 @@
             <hardwareInterface>PositionJointInterface</hardwareInterface>
         </actuator>
     </transmission>
-    
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/tracer</robotNamespace>
+            <robotParam>/robot_description</robotParam>
+            <legacyModeNS>true</legacyModeNS> 
+        </plugin>
+    </gazebo>
 </robot>

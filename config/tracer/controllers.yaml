@@ -9,15 +9,16 @@ tracer:
     type: position_controllers/JointPositionController
     joint: platform2chasis
     pid: {p: 100.0, i: 0.1, d: 1.0}
-  # left2chasis_position_controller:
-  #   type: velocity_controllers/JointVelocityController
-  #   joint: left2chasis
-  #   pid: {p: 100.0, i: 0.1, d: 1.0}
-  # right2chasis_position_controller:
-  #   type: velocity_controllers/JointVelocityController
-  #   joint: right2chasis
-  #   pid: {p: 100.0, i: 0.1, d: 1.0}
-
+  
+  left2chasis_position_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: left2chasis
+    pid: {p: 100.0, i: 0.1, d: 1.0}
+  right2chasis_position_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: right2chasis
+    pid: {p: 100.0, i: 0.1, d: 1.0}
+  
   # gazebo_ros_control:
   #   pid_gains:
   #     left2chasis: {p: 100.0, i: 0.1, d: 1.0}

@@ -20,6 +20,16 @@
             <origin xyz="${flag*0.3} 0.0 ${(sphere_radius+chasis_length/2)*-1}" rpy="0.0 0.0 0.0"/>
             <axis xyz="1 1 1" />
         </joint>
+        <transmission name="${sphere_name}2chasis_trans">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${sphere_name}2chasis">
+                <hardwareInterface>EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${sphere_name}2chasis_motor">
+                <mechanicalReduction>1.0</mechanicalReduction>
+                <hardwareInterface>EffortJointInterface</hardwareInterface>
+            </actuator>
+        </transmission>
     </xacro:macro>
     <xacro:sphere_func sphere_name="front" flag = "1"/>
     <xacro:sphere_func sphere_name="behind" flag = "-1"/>

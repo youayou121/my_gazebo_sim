@@ -35,30 +35,28 @@
     </xacro:macro>
     <xacro:wheel_func wheel_name="left" flag = "1"/>
     <xacro:wheel_func wheel_name="right" flag = "-1"/>
+ 
     <gazebo>
         <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
-            <!-- <publishWheelTF>true</publishWheelTF> -->
+            <rosDebugLevel>Debug</rosDebugLevel>
+            <publishWheelTF>false</publishWheelTF>
             <robotNamespace>/</robotNamespace>
-            <!-- <publishTf>1</publishTf> -->
-            <publishWheelJointState>true</publishWheelJointState>
+            <publishTf>1</publishTf>
+            <publishWheelJointState>false</publishWheelJointState>
             <alwaysOn>true</alwaysOn>
             <updateRate>100.0</updateRate>
-            <!-- <legacyMode>true</legacyMode> -->
+            <legacyMode>true</legacyMode>
             <leftJoint>left2chasis</leftJoint> <!-- 左轮 -->
             <rightJoint>right2chasis</rightJoint> <!-- 右轮 -->
-            <wheelSeparation>${wheel_dist+wheel_length}</wheelSeparation> <!-- 车轮间距 -->
+            <wheelSeparation>${0.6+wheel_length}</wheelSeparation> <!-- 车轮间距 -->
             <wheelDiameter>${wheel_radius*2}</wheelDiameter> <!-- 车轮直径 -->
-            <!-- <broadcastTF>1</broadcastTF> -->
+            <broadcastTF>1</broadcastTF>
             <wheelTorque>30</wheelTorque>
-            <!-- <wheelAcceleration>1.8</wheelAcceleration> -->
-            <commandTopic>/cmd_vel</commandTopic> <!-- 运动控制话题 -->
+            <wheelAcceleration>1.8</wheelAcceleration>
+            <commandTopic>tracer/cmd_vel</commandTopic> <!-- 运动控制话题 -->
             <odometryFrame>/odom</odometryFrame> 
             <odometryTopic>/odom</odometryTopic> <!-- 里程计话题 -->
             <robotBaseFrame>/base_link</robotBaseFrame> <!-- 根坐标系 -->
         </plugin>
-        <!-- <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-            <robotNamespace>/tracer</robotNamespace>
-        </plugin> -->
     </gazebo>
-        
 </robot>
