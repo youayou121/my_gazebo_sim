@@ -33,6 +33,12 @@
                 <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
             </actuator>
         </transmission>
+        <gazebo reference="rear_${name}_wheel">
+            <mu1 value="10.0"/>
+            <mu2 value="10.0"/>
+            <kp value="1000000.0" />
+            <kd value="10.0" />
+        </gazebo>
     </xacro:macro>
     <xacro:rear_wheels_func name="left" flag="1"/>
     <xacro:rear_wheels_func name="right" flag="-1"/>

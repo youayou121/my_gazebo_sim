@@ -11,7 +11,6 @@
         <param name="publish_frequency" type="double" value="20.0" />
         <param name="robot_description" command="$(find xacro)/xacro --inorder $(find test_mycar)/xacro/ackermann/racecar.xacro"/> 
     </node>
-    <!-- <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" output="screen"/> -->
     
     <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -model racecar -param robot_description"/>
     <node name="controller_manager" 
@@ -25,7 +24,7 @@
             front_left_steering_position_controller
             joint_state_controller"/>
     <!-- 发布里程计信息 -->
-    <node pkg="test_mycar" type="servo_commands.py" name="servo_commands" output="screen"/>
     <node name="gazebo_odometry" pkg="test_mycar" type="gazebo_odometry.py"/>
-    <node name="nav_sim" pkg="test_mycar" type="nav_sim.py" />
+    <!-- 订阅cmd_vel并转换成Joint发布 -->
+    <node name="nav_sim" pkg="test_mycar" type="nav_sim.py"/>
 </launch>

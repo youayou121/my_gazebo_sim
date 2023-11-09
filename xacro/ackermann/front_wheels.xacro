@@ -21,18 +21,18 @@
         <joint name="${name}_steering2chasis" type="revolute">
             <parent link="chasis"/>
             <child link="${name}_steering"/>
-            <axis xyz="0 0 1"/>
-            <limit lower="-1.52" upper="1.52" velocity="1.0" effort="1000.0"/>
+            <axis xyz="0 0 -1"/>
+            <limit lower="${-pi/4}" upper="${pi/4}" velocity="4.553" effort="0.5649"/>
             <origin xyz="${chasis_l/2-wheel_r} ${flag*(chasis_w/2-wheel_l/2)} ${-(wheel_r+chasis_h/2)}" rpy="0 0 0"/>
         </joint>
         <transmission name="${name}_steering2chasis_trans">
             <type>transmission_interface/SimpleTransmission</type>
             <joint name="${name}_steering2chasis">
-                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+                <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
             </joint>
             <actuator name="${name}_steering2chasis_motor">
                 <mechanicalReduction>1.0</mechanicalReduction>
-                <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+                <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
             </actuator>
         </transmission>
         <link name="front_${name}_wheel">
@@ -66,6 +66,12 @@
                 <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
             </actuator>
         </transmission>
+        <gazebo reference="front_${name}_wheel">
+            <mu1 value="100.0"/>
+            <mu2 value="50.0"/>
+            <kp value="1000000.0" />
+            <kd value="10.0" />
+        </gazebo>
     </xacro:macro>
     <xacro:front_wheels_func name="left" flag="1"/>
     <xacro:front_wheels_func name="right" flag="-1"/>

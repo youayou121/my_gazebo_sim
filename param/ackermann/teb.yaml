@@ -33,29 +33,29 @@ TebLocalPlannerROS:
   publish_feedback: False
 
   # Robot
-  max_vel_x: 1.0
-  max_vel_x_backwards: 1.0
-  max_vel_theta: 3
-  acc_lim_x: 4
-  acc_lim_theta: 3
+  max_vel_x: 1
+  max_vel_x_backwards: 1
+  max_vel_theta: 2
+  acc_lim_x: 1
+  acc_lim_theta: 2
 
-  #仅适用于全向轮src/my_racecar_sim/bringup/launch/move_base_teb.launch
+  #仅适用于全向轮
   # max_vel_y (double, default: 0.0)  
   # acc_lim_y (double, default: 0.5)
 
   # ********************** Carlike robot parameters ********************
-  min_turning_radius: 1.2      # 最小转弯半径 注意车辆运动学中心是后轮中点
+  min_turning_radius: 1.2       # 最小转弯半径 注意车辆运动学中心是后轮中点
   wheelbase: 0.8                # 即前后轮距离
 
 #设置为true时，ROS话题（rostopic） cmd_vel/angular/z 内的数据是舵机角度，
   cmd_angle_instead_rotvel: True 
-  # **************src/my_racecar_sim/bringup/launch/move_base_teb.launch******************************************************
+  # ********************************************************************
 
   footprint_model: # types: "point", "circular", "two_circles", "line", "polygon" 多边形勿重复第一个顶点，会自动闭合
     type: "line"
     # radius: 0.2 # for type "circular"
-    line_start: [-0.13, 0.0] # for type "line"
-    line_end: [0.13, 0.0] # for type "line"
+    line_start: [-0.5, 0.0] # for type "line"
+    line_end: [0.5, 0.0] # for type "line"
     # front_offset: 0.2 # for type "two_circles"
     # front_radius: 0.2 # for type "two_circles"
     # rear_offset: 0.2 # for type "two_circles"
@@ -73,7 +73,7 @@ TebLocalPlannerROS:
   # complete_global_plan: True   
   # Obstacles
       
-  min_obstacle_dist: 0.3 # 与障碍的最小期望距离,
+  min_obstacle_dist: 0.5 # 与障碍的最小期望距离,
   include_costmap_obstacles: True #应否考虑到局部costmap的障碍设置为True后才能规避实时探测到的、建图时不存在的障碍物。
   costmap_obstacles_behind_robot_dist: 2.0 #考虑后面n米内的障碍物
   obstacle_poses_affected: 30 #为了保持距离，每个障碍物位置都与轨道上最近的位置相连。
@@ -82,12 +82,12 @@ TebLocalPlannerROS:
 
   # Optimization
       
-  no_inner_iterations: 4
-  no_outer_iterations: 2
+  no_inner_iterations: 5
+  no_outer_iterations: 4
   optimization_activate: True
   optimization_verbose: False
   penalty_epsilon: 0.1
-  weight_max_vel_x: 1
+  weight_max_vel_x: 2
   weight_max_vel_theta: 1
   weight_acc_lim_x: 1
   weight_acc_lim_theta: 1
@@ -95,30 +95,7 @@ TebLocalPlannerROS:
   weight_kinematics_forward_drive: 1
   weight_kinematics_turning_radius: 1
   weight_optimaltime: 1
-  weight_obstacle: 200
+  weight_obstacle: 50
   weight_dynamic_obstacle: 10 # not in use yet
   alternative_time_cost: False # not in use yet
   selection_alternative_time_cost: False
-  # Homotopy Class Planner
-
-  enable_homotopy_class_planning: False
-  enable_multithreading: True
-  simple_exploration: false
-  max_number_classes: 3
-  roadmap_graph_no_samples: 15
-  roadmap_graph_area_width: 5
-  h_signature_prescaler: 0.5
-  h_signature_threshold: 0.1
-  obstacle_keypoint_offset: 0.1
-  obstacle_heading_threshold: 0.45
-  visualize_hc_graph: False
-
-  # # Recovery
-
-  # shrink_horizon_backup: True
-  # shrink_horizon_min_duration: 10
-  # oscillation_recovery: True
-  # oscillation_v_eps: 0.1
-  # oscillation_omega_eps: 0.1
-  # oscillation_recovery_min_duration: 10
-  # oscillation_filter_duration: 10

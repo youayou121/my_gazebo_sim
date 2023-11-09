@@ -5,13 +5,13 @@
     <xacro:property name="chasis_l" value="1.0"/>
     <xacro:property name="chasis_w" value="0.6"/>
     <xacro:property name="chasis_h" value="0.1"/>
-    <xacro:property name="chasis_m" value="10.0"/>
+    <xacro:property name="chasis_m" value="20.0"/>
     <xacro:property name="wheel_r" value="0.1"/>
     <xacro:property name="wheel_l" value="0.1"/>
-    <xacro:property name="wheel_m" value="2.0"/>
+    <xacro:property name="wheel_m" value="5.0"/>
     <xacro:property name="lidar_r" value="0.1"/>
     <xacro:property name="lidar_l" value="0.1"/>
-    <xacro:property name="lidar_m" value="0.5"/>
+    <xacro:property name="lidar_m" value="1.0"/>
     <xacro:property name="imu_l" value="0.05"/>
     <xacro:property name="imu_w" value="0.05"/>
     <xacro:property name="imu_h" value="0.01"/>
