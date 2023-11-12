@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <launch>
-    <rosparam file="$(find test_mycar)/config/tracer/controllers.yaml" command="load"/>
-    <param name="robot_description" command="$(find xacro)/xacro $(find test_mycar)/xacro/tracer/tracer.xacro"/>
+    <rosparam file="$(find my_gazebo_sim)/config/tracer/controllers.yaml" command="load"/>
+    <param name="robot_description" command="$(find xacro)/xacro $(find my_gazebo_sim)/xacro/tracer/tracer.xacro"/>
      <include file="$(find gazebo_ros)/launch/empty_world.launch">
-        <arg name="world_name" value = "$(find test_mycar)/worlds/my_room_wall.world"/>
+        <arg name="world_name" value = "$(find my_gazebo_sim)/worlds/my_room_wall_4.world"/>
     </include>
 
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
         <remap from="/joint_states" to="/tracer/joint_states"/>
         <param name="publish_frequency" type="double" value="20.0" />
-        <param name="robot_description" command="$(find xacro)/xacro --inorder $(find test_mycar)/xacro/tracer/tracer.xacro" />
+        <param name="robot_description" command="$(find xacro)/xacro --inorder $(find my_gazebo_sim)/xacro/tracer/tracer.xacro" />
     </node>
     <!-- <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" /> -->
-    <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -model tracer -param robot_description -x 2"/>
+    <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -model tracer -param robot_description -x 5 -y -1"/>
     
     <node name="controller_manager" 
             pkg="controller_manager" 
@@ -24,5 +24,5 @@
         left2chasis_position_controller
         right2chasis_position_controller"
         />
-    <!-- <node name="odom_pub_diff" pkg="test_mycar" type="odom_pub_diff" output="screen"/> -->
+    <!-- <node name="odom_pub_diff" pkg="my_gazebo_sim" type="odom_pub_diff" output="screen"/> -->
 </launch>

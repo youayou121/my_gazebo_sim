@@ -32,14 +32,14 @@
             </geometry>
         </visual>
     </link>
-    <xacro:include filename="$(find test_mycar)/xacro/inertia.xacro"/>
-    <xacro:include filename="$(find test_mycar)/xacro/tracer/platform.xacro"/>
-    <xacro:include filename="$(find test_mycar)/xacro/tracer/chasis.xacro"/>
-    <xacro:include filename="$(find test_mycar)/xacro/tracer/lidar.xacro"/>
-    <!-- <xacro:include filename="$(find test_mycar)/xacro/tracer/camera.xacro"/> -->
-    <xacro:include filename="$(find test_mycar)/xacro/tracer/kinect_camera.xacro"/>
-    <xacro:include filename="$(find test_mycar)/xacro/tracer/spheres.xacro"/>
-    <xacro:include filename="$(find test_mycar)/xacro/tracer/wheels.xacro"/>
-    <xacro:include filename="$(find test_mycar)/xacro/tracer/imu.xacro"/>
+    <xacro:include filename="$(find my_gazebo_sim)/xacro/inertia.xacro"/>
+    <xacro:include filename="$(find my_gazebo_sim)/xacro/tracer/platform.xacro"/>
+    <xacro:include filename="$(find my_gazebo_sim)/xacro/tracer/chasis.xacro"/>
+    <xacro:include filename="$(find my_gazebo_sim)/xacro/tracer/lidar.xacro"/>
+    <!-- <xacro:include filename="$(find my_gazebo_sim)/xacro/tracer/camera.xacro"/> -->
+    <xacro:include filename="$(find my_gazebo_sim)/xacro/tracer/kinect_camera.xacro"/>
+    <xacro:include filename="$(find my_gazebo_sim)/xacro/tracer/spheres.xacro"/>
+    <xacro:include filename="$(find my_gazebo_sim)/xacro/tracer/wheels.xacro"/>
+    <xacro:include filename="$(find my_gazebo_sim)/xacro/tracer/imu.xacro"/>
     
 </robot>

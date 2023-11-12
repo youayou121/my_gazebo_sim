@@ -6,11 +6,11 @@
                 <box size="${chasis_l} ${chasis_w} ${chasis_h}"/>
             </geometry>
         </visual>
-        <collision>
+        <!-- <collision>
             <geometry>
                 <box size="${chasis_l} ${chasis_w} ${chasis_h}"/>
             </geometry>
-        </collision>
+        </collision> -->
         <xacro:box_inertial_matrix m="${chasis_m}" l="${chasis_l}" w="${chasis_w}" h="${chasis_h}" />
     </link>
     <joint name="chasis2base" type="fixed">

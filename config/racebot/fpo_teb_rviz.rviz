@@ -8,7 +8,7 @@ Panels:
         - /Status1
         - /TF1/Frames1
         - /TF1/Tree1
-        - /Polygon1
+        - /MarkerArray1
       Splitter Ratio: 0.5
     Tree Height: 745
   - Class: rviz/Selection
@@ -65,12 +65,15 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        base_link:
+        base_footprint:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: true
-        behind_wheel:
+        base_inertia:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -80,26 +83,22 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        camera_depth:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        chasis:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        front_wheel:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         imu:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        left_wheel:
+        left_front_wheel:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        left_rear_wheel:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        left_steering_hinge:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -109,12 +108,26 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        platform:
+        real_sense:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        right_wheel:
+        realsense_depth:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        right_front_wheel:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        right_rear_wheel:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        right_steering_hinge:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -139,21 +152,21 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        base_link:
+        base_footprint:
           Value: true
-        behind_wheel:
+        base_inertia:
+          Value: true
+        base_link:
           Value: true
         camera:
           Value: true
-        camera_depth:
-          Value: true
-        chasis:
-          Value: true
-        front_wheel:
-          Value: true
         imu:
           Value: true
-        left_wheel:
+        left_front_wheel:
+          Value: true
+        left_rear_wheel:
+          Value: true
+        left_steering_hinge:
           Value: true
         lidar:
           Value: true
@@ -161,9 +174,15 @@ Visualization Manager:
           Value: true
         odom:
           Value: true
-        platform:
+        real_sense:
           Value: true
-        right_wheel:
+        realsense_depth:
+          Value: true
+        right_front_wheel:
+          Value: true
+        right_rear_wheel:
+          Value: true
+        right_steering_hinge:
           Value: true
       Marker Scale: 1
       Name: TF
@@ -173,25 +192,29 @@ Visualization Manager:
       Tree:
         map:
           odom:
-            base_link:
-              chasis:
-                behind_wheel:
+            base_footprint:
+              base_link:
+                base_inertia:
                   {}
                 camera:
-                  camera_depth:
-                    {}
-                front_wheel:
                   {}
                 imu:
                   {}
-                left_wheel:
+                left_rear_wheel:
                   {}
+                left_steering_hinge:
+                  left_front_wheel:
+                    {}
                 lidar:
                   {}
-                platform:
+                real_sense:
+                  realsense_depth:
+                    {}
+                right_rear_wheel:
                   {}
-                right_wheel:
-                  {}
+                right_steering_hinge:
+                  right_front_wheel:
+                    {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -237,16 +260,16 @@ Visualization Manager:
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
-        Max Value: 2.4998459815979004
-        Min Value: -3.159046173095703e-5
+        Max Value: 0.5001454949378967
+        Min Value: 0.4999803602695465
         Value: true
       Axis: Z
       Channel Name: intensity
       Class: rviz/PointCloud2
-      Color: 255; 255; 255
-      Color Transformer: AxisColor
+      Color: 245; 121; 0
+      Color Transformer: FlatColor
       Decay Time: 0
-      Enabled: false
+      Enabled: true
       Invert Rainbow: false
       Max Color: 255; 255; 255
       Min Color: 0; 0; 0
@@ -255,13 +278,13 @@ Visualization Manager:
       Queue Size: 10
       Selectable: true
       Size (Pixels): 1
-      Size (m): 0.05000000074505806
-      Style: Points
-      Topic: /camera/depth/points
+      Size (m): 0.10000000149011612
+      Style: Spheres
+      Topic: /cloud_filtered
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
-      Value: false
+      Value: true
     - Alpha: 0.699999988079071
       Class: rviz/Map
       Color Scheme: costmap
@@ -362,6 +385,14 @@ Visualization Manager:
       Topic: /move_base/global_costmap/footprint
       Unreliable: false
       Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: /obs_markers
+      Name: MarkerArray
+      Namespaces:
+        "": true
+      Queue Size: 100
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -390,16 +421,16 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 40.101470947265625
+      Distance: 24.517959594726562
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 21.935161590576172
-        Y: -4.498284339904785
-        Z: -0.34362927079200745
+        X: 10.976932525634766
+        Y: 3.813145637512207
+        Z: -0.3297944962978363
       Focal Shape Fixed Size: false
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
@@ -408,7 +439,7 @@ Visualization Manager:
       Pitch: 1.5697963237762451
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 4.695431709289551
+      Yaw: 4.760429859161377
     Saved: ~
 Window Geometry:
   Displays:

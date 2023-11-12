@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="racecar">
     <link name="base_link"/>
-    <xacro:include filename="$(find test_mycar)/xacro/inertia.xacro"/>
+    <xacro:include filename="$(find my_gazebo_sim)/xacro/inertia.xacro"/>
     <xacro:property name="chasis_l" value="1.0"/>
     <xacro:property name="chasis_w" value="0.6"/>
     <xacro:property name="chasis_h" value="0.1"/>
@@ -18,11 +18,11 @@
     <xacro:property name="imu_m" value="0.5"/>
     
     <!-- <xacro:property name="pi" value="3.1415926"/> -->
-    <xacro:include filename="$(find test_mycar)/xacro/ackermann/chasis.xacro"/>
-    <xacro:include filename="$(find test_mycar)/xacro/ackermann/rear_wheels.xacro"/>
-    <xacro:include filename="$(find test_mycar)/xacro/ackermann/front_wheels.xacro"/>
-    <xacro:include filename="$(find test_mycar)/xacro/ackermann/lidar.xacro"/>
-    <xacro:include filename="$(find test_mycar)/xacro/ackermann/imu.xacro"/>
+    <xacro:include filename="$(find my_gazebo_sim)/xacro/ackermann/chasis.xacro"/>
+    <xacro:include filename="$(find my_gazebo_sim)/xacro/ackermann/rear_wheels.xacro"/>
+    <xacro:include filename="$(find my_gazebo_sim)/xacro/ackermann/front_wheels.xacro"/>
+    <xacro:include filename="$(find my_gazebo_sim)/xacro/ackermann/lidar.xacro"/>
+    <xacro:include filename="$(find my_gazebo_sim)/xacro/ackermann/imu.xacro"/>
     <gazebo>
         <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
             <robotNamespace>/racecar</robotNamespace>

@@ -37,6 +37,6 @@
         <param name="lasamplerange" value="0.005"/>
         <param name="lasamplestep" value="0.005"/>
     </node>
-    <!-- <include file="$(find test_mycar)/launch/amcl.launch"/> -->
-     <node name="rviz" pkg="rviz" type="rviz"  output="log" args = "-d $(find test_mycar)/config/test_tracer.rviz"/>
+    <!-- <include file="$(find my_gazebo_sim)/launch/amcl.launch"/> -->
+     <node name="rviz" pkg="rviz" type="rviz"  output="log" args = "-d $(find my_gazebo_sim)/config/test_tracer.rviz"/>
 </launch>

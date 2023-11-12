@@ -9,10 +9,11 @@
         <rosparam file="$(find my_gazebo_sim)/param/costmap/common.yaml" command="load" ns="local_costmap" />
         <rosparam file="$(find my_gazebo_sim)/param/costmap/local.yaml" command="load" />
         <rosparam file="$(find my_gazebo_sim)/param/costmap/global.yaml" command="load" />
-        <rosparam file="$(find my_gazebo_sim)/param/tracer/teb.yaml" command="load" />
+        <rosparam file="$(find my_gazebo_sim)/param/racebot/teb.yaml" command="load" />
         <!-- <rosparam file="$(find my_gazebo_sim)/param/tracer/dwa.yaml" command="load" /> -->
-        <rosparam file="$(find my_gazebo_sim)/param/tracer/move_base.yaml" command="load" />
+        <rosparam file="$(find my_gazebo_sim)/param/racebot/move_base.yaml" command="load" />
+        <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />
     </node>
     <include file="$(find my_gazebo_sim)/launch/amcl.launch"/>
-     <node name="rviz" pkg="rviz" type="rviz"  output="log" args = "-d $(find my_gazebo_sim)/config/tracer/tracer.rviz"/>
+     <node name="rviz" pkg="rviz" type="rviz"  output="log" args = "-d $(find my_gazebo_sim)/config/racebot/teb_rviz.rviz"/>
 </launch>
