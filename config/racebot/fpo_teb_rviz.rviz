@@ -8,6 +8,7 @@ Panels:
         - /Status1
         - /TF1/Frames1
         - /TF1/Tree1
+        - /PoseArray1
         - /MarkerArray1
       Splitter Ratio: 0.5
     Tree Height: 745
@@ -374,7 +375,7 @@ Visualization Manager:
       Shaft Length: 0.23000000417232513
       Shaft Radius: 0.009999999776482582
       Shape: Arrow (Flat)
-      Topic: /move_base/TebLocalPlannerROS/teb_poses
+      Topic: /move_base/FpoTebLocalPlannerROS/teb_poses
       Unreliable: false
       Value: true
     - Alpha: 1
@@ -390,7 +391,7 @@ Visualization Manager:
       Marker Topic: /obs_markers
       Name: MarkerArray
       Namespaces:
-        "": true
+        {}
       Queue Size: 100
       Value: true
   Enabled: true
@@ -428,9 +429,9 @@ Visualization Manager:
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 10.976932525634766
-        Y: 3.813145637512207
-        Z: -0.3297944962978363
+        X: 11.369623184204102
+        Y: 4.2629241943359375
+        Z: -0.3293643593788147
       Focal Shape Fixed Size: false
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
