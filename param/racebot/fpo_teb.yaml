@@ -33,10 +33,10 @@ FpoTebLocalPlannerROS:
   publish_feedback: False
 
   # Robot
-  max_vel_x: 1.0
+  max_vel_x: 1.2
   max_vel_x_backwards: 1
   max_vel_theta: 3.5
-  acc_lim_x: 100
+  acc_lim_x: 50
   acc_lim_theta: 3.5
 
   #仅适用于全向轮
@@ -68,7 +68,7 @@ FpoTebLocalPlannerROS:
     vertices: [[0.15, 0.15], [0.15, -0.15], [-0.15, -0.15], [-0.15, 0.15]]    
 
   xy_goal_tolerance: 0.1
-  yaw_goal_tolerance: 1.0
+  yaw_goal_tolerance: 0.5
   #自由目标速度。设为False时，车辆到达终点时的目标速度为0。
   #TEB是时间最优规划器。缺少目标速度约束将导致车辆“全速冲线”
   free_goal_vel: True
@@ -76,7 +76,7 @@ FpoTebLocalPlannerROS:
   # complete_global_plan: True   
   # Obstacles
       
-  min_obstacle_dist: 0.2 # 与障碍的最小期望距离,
+  min_obstacle_dist: 0.5 # 与障碍的最小期望距离,
   include_costmap_obstacles: True #应否考虑到局部costmap的障碍设置为True后才能规避实时探测到的、建图时不存在的障碍物。
   costmap_obstacles_behind_robot_dist: 2.0 #考虑后面n米内的障碍物2.0
   obstacle_poses_affected: 30 #为了保持距离，每个障碍物位置都与轨道上最近的位置相连。
