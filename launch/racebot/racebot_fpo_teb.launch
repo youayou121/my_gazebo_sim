@@ -14,5 +14,7 @@
         <param name="base_local_planner" value="fpo_teb/FpoTebLocalPlannerROS" />
     </node>
     <include file="$(find my_gazebo_sim)/launch/amcl.launch"/>
-     <node name="rviz" pkg="rviz" type="rviz"  output="log" args = "-d $(find my_gazebo_sim)/config/racebot/fpo_teb_rviz.rviz"/>
+    <node name="rviz" pkg="rviz" type="rviz"  output="log" args = "-d $(find my_gazebo_sim)/config/racebot/fpo_teb_rviz.rviz"/>
+    <!-- <include file="$(find obstacle_prediction)/launch/obstacle_prediction.launch"/> -->
+    
 </launch>

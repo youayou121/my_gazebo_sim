@@ -21,7 +21,7 @@
         	<arg name="paused" value="$(arg paused)"/>
         	<arg name="use_sim_time" value="$(arg use_sim_time)"/>
         	<arg name="headless" value="$(arg headless)"/>
-	       <arg name="world_name" value="$(find my_gazebo_sim)/worlds/my_room_wall_4.world"/>
+	       <arg name="world_name" value="$(find my_gazebo_sim)/worlds/my_room_wall_2.world"/>
                <!-- .world文件的地址-->
     	</include>
 

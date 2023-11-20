@@ -11,8 +11,8 @@ obstacle_layer:
   scan: 
     data_type: LaserScan 
     topic: scan 
-    marking: true 
-    clearing: true
+    marking: false
+    clearing: false
 
 inflation_layer:
   enabled: true
